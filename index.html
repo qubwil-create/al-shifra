@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الشِفرة</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <h1>الشِفرة</h1>
+      <div id="roomBadge" class="room-badge" style="display:none"></div>
+    </header>
+
+    <!-- شاشة البداية -->
+    <section id="landing" class="panel">
+      <div class="card">
+        <h2>إنشاء غرفة جديدة</h2>
+        <input id="createName" placeholder="اسمك" />
+        <button id="createBtn">إنشاء غرفة</button>
+      </div>
+      <div class="card">
+        <h2>الانضمام إلى غرفة</h2>
+        <input id="joinName" placeholder="اسمك" />
+        <input id="joinRoomId" placeholder="رمز الغرفة" style="text-transform:uppercase" />
+        <button id="joinBtn">انضمام</button>
+      </div>
+      <p id="landingError" class="error"></p>
+    </section>
+
+    <!-- شاشة الردهة (اختيار الفريق والدور) -->
+    <section id="lobby" class="panel" style="display:none">
+      <h2>اختر فريقك ودورك</h2>
+      <div class="teams">
+        <div class="team-col red">
+          <h3>الفريق الأحمر</h3>
+          <div class="role-buttons">
+            <button data-team="red" data-role="spymaster">مرشد</button>
+            <button data-team="red" data-role="operative">لاعب</button>
+          </div>
+          <ul id="redPlayers" class="player-list"></ul>
+        </div>
+        <div class="team-col blue">
+          <h3>الفريق الأزرق</h3>
+          <div class="role-buttons">
+            <button data-team="blue" data-role="spymaster">مرشد</button>
+            <button data-team="blue" data-role="operative">لاعب</button>
+          </div>
+          <ul id="bluePlayers" class="player-list"></ul>
+        </div>
+      </div>
+      <button id="startBtn" class="primary">بدء اللعبة</button>
+      <p id="lobbyError" class="error"></p>
+    </section>
+
+    <!-- شاشة اللعب -->
+    <section id="game" class="panel" style="display:none">
+      <div class="status-bar">
+        <div id="turnIndicator" class="turn-indicator"></div>
+        <div class="scores">
+          <span class="score red">أحمر: <b id="scoreRed">-</b></span>
+          <span class="score blue">أزرق: <b id="scoreBlue">-</b></span>
+        </div>
+      </div>
+
+      <div id="clueBar" class="clue-bar" style="display:none"></div>
+
+      <div id="clueForm" class="clue-form" style="display:none">
+        <input id="clueWord" placeholder="كلمة التلميح" />
+        <input id="clueCount" type="number" min="0" max="9" placeholder="العدد" />
+        <button id="giveClueBtn">إرسال التلميح</button>
+      </div>
+
+      <div id="board" class="board"></div>
+
+      <button id="endTurnBtn" style="display:none">إنهاء الدور</button>
+
+      <div class="game-footer">
+        <div id="log" class="log"></div>
+        <div class="chat-box">
+          <div id="chat" class="chat-messages"></div>
+          <div class="chat-input-row">
+            <input id="chatInput" placeholder="اكتب رسالة..." />
+            <button id="chatSendBtn">إرسال</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- شاشة النهاية -->
+    <section id="ended" class="panel" style="display:none">
+      <h2 id="winnerText"></h2>
+      <div id="finalBoard" class="board"></div>
+    </section>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
