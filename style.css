@@ -1,162 +1,176 @@
 /* =========================================================
-Cyberpunk / Dark Theme for Al-Shifra Game
-========================================================= */
-@import url('https://fonts.googleapis.com/css2?
-family=Tajawal:wght@400;700;900&display=swap');
-:root {
---bg-main: #0b0f17;
---bg-card: #121926;
---bg-input: #1a2332;
---accent-cyan: #00ffcc;
---accent-cyan-glow: rgba(0, 255, 204, 0.35);
---accent-green: #10b981;
---accent-green-glow: rgba(16, 185, 129, 0.35);
---text-primary: #e2e8f0;
---text-secondary: #94a3b8;
---border-color: #1e293b;
---rank-color: #38bdf8;
-}
-* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-font-family: 'Tajawal', sans-serif;
-}
-body {
-background-color: var(--bg-main);
-color: var(--text-primary);
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 20px;
-background-image:
-radial-gradient(circle at 50% 0%, rgba(0, 255, 204, 0.08) 0%, transparent 60%),
+   Cyberpunk / Dark Theme for Al-Shifra Game
+   ========================================================= */
 
-linear-gradient(to bottom, rgba(11, 15, 23, 0.95), #0b0f17);
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+
+:root {
+    --bg-main: #0b0f17;
+    --bg-card: #121926;
+    --bg-input: #1a2332;
+    --accent-cyan: #00ffcc;
+    --accent-cyan-glow: rgba(0, 255, 204, 0.35);
+    --accent-green: #10b981;
+    --accent-green-glow: rgba(16, 185, 129, 0.35);
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --border-color: #1e293b;
+    --rank-color: #38bdf8;
 }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 255, 204, 0.08) 0%, transparent 60%),
+        linear-gradient(to bottom, rgba(11, 15, 23, 0.95), #0b0f17);
+}
+
 /* Header & Logo Section */
 .header-container {
-display: flex;
-align-items: center;
-gap: 16px;
-margin-bottom: 30px;
-padding: 12px 24px;
-background: var(--bg-card);
-border: 1px solid var(--border-color);
-border-radius: 12px;
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 10px var(--accent-cyan-glow);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    padding: 12px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 10px var(--accent-cyan-glow);
 }
+
 .rank-logo {
-width: 48px;
-height: 48px;
-position: relative;
-display: flex;
-align-items: center;
-justify-content: center;
-background: radial-gradient(circle, var(--accent-cyan-glow) 0%, transparent 70%);
+    width: 48px;
+    height: 48px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, var(--accent-cyan-glow) 0%, transparent 70%);
 }
+
 .rank-logo svg {
-width: 100%;
-height: 100%;
-fill: var(--accent-cyan);
-filter: drop-shadow(0 0 6px var(--accent-cyan));
+    width: 100%;
+    height: 100%;
+    fill: var(--accent-cyan);
+    filter: drop-shadow(0 0 6px var(--accent-cyan));
 }
+
 .game-title {
-font-size: 2rem;
-font-weight: 900;
-color: #ffffff;
-text-shadow: 0 0 10px var(--accent-cyan-glow);
-letter-spacing: 1px;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 10px var(--accent-cyan-glow);
+    letter-spacing: 1px;
 }
+
 /* Card Container */
 .game-container {
-width: 100%;
-max-width: 650px;
-background: var(--bg-card);
-border: 1px solid var(--border-color);
-border-radius: 16px;
-padding: 24px;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-position: relative;
-overflow: hidden;
+    width: 100%;
+    max-width: 650px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    position: relative;
+    overflow: hidden;
 }
-.game-container::before {
-content: '';
-position: absolute;
 
-top: 0;
-left: 0;
-right: 0;
-height: 3px;
-background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+.game-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
 }
+
 /* Input & Buttons */
 input[type="text"], input[type="number"] {
-width: 100%;
-padding: 14px 18px;
-background: var(--bg-input);
-border: 1px solid var(--border-color);
-border-radius: 8px;
-color: var(--accent-cyan);
-font-size: 1.1rem;
-outline: none;
-transition: all 0.3s ease;
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--accent-cyan);
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s ease;
 }
+
 input[type="text"]:focus, input[type="number"]:focus {
-border-color: var(--accent-cyan);
-box-shadow: 0 0 12px var(--accent-cyan-glow);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 12px var(--accent-cyan-glow);
 }
+
 button, .btn {
-background: linear-gradient(135deg, #00c896, #00ffcc);
-color: #0b0f17;
-font-weight: 700;
-font-size: 1.05rem;
-padding: 12px 24px;
-border: none;
-border-radius: 8px;
-cursor: pointer;
-transition: all 0.3s ease;
-text-shadow: none;
-box-shadow: 0 4px 15px var(--accent-cyan-glow);
+    background: linear-gradient(135deg, #00c896, #00ffcc);
+    color: #0b0f17;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: none;
+    box-shadow: 0 4px 15px var(--accent-cyan-glow);
 }
+
 button:hover, .btn:hover {
-transform: translateY(-2px);
-box-shadow: 0 6px 20px var(--accent-cyan-glow);
-filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--accent-cyan-glow);
+    filter: brightness(1.1);
 }
+
 /* Keyboard / Buttons Grid */
 .keyboard-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-gap: 8px;
-margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 8px;
+    margin-top: 20px;
 }
-.key-btn {
-background: var(--bg-input);
-border: 1px solid var(--border-color);
-color: var(--text-primary);
 
-padding: 10px;
-border-radius: 6px;
-font-weight: bold;
-cursor: pointer;
-text-align: center;
-transition: all 0.2s;
+.key-btn {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
 }
+
 .key-btn:hover {
-border-color: var(--accent-cyan);
-color: var(--accent-cyan);
-background: rgba(0, 255, 204, 0.1);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    background: rgba(0, 255, 204, 0.1);
 }
+
 /* Status / Cyber Badges */
 .badge {
-display: inline-block;
-padding: 4px 12px;
-border-radius: 20px;
-font-size: 0.85rem;
-font-weight: bold;
-background: rgba(16, 185, 129, 0.15);
-color: var(--accent-green);
-border: 1px solid var(--accent-green);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
 }
