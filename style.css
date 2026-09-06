@@ -1,179 +1,162 @@
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-html { -webkit-text-size-adjust: 100%; }
+/* =========================================================
+Cyberpunk / Dark Theme for Al-Shifra Game
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?
+family=Tajawal:wght@400;700;900&display=swap');
+:root {
+--bg-main: #0b0f17;
+--bg-card: #121926;
+--bg-input: #1a2332;
+--accent-cyan: #00ffcc;
+--accent-cyan-glow: rgba(0, 255, 204, 0.35);
+--accent-green: #10b981;
+--accent-green-glow: rgba(16, 185, 129, 0.35);
+--text-primary: #e2e8f0;
+--text-secondary: #94a3b8;
+--border-color: #1e293b;
+--rank-color: #38bdf8;
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Tajawal', sans-serif;
+}
 body {
-  font-family: "Tahoma", "Segoe UI", sans-serif;
-  background: #12141c;
-  color: #eee;
-  margin: 0;
-  padding: 0;
-}
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  background: #1b1e2b;
-  border-bottom: 2px solid #2c2f42;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.topbar h1 { margin: 0; color: #f2c14e; letter-spacing: 2px; font-size: clamp(18px, 5vw, 26px); }
-.room-badge {
-  background: #2c2f42;
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  font-size: 13px;
-  white-space: nowrap;
-}
-#app { max-width: 960px; margin: 0 auto; padding: 12px; }
-.panel { display: flex; flex-direction: column; gap: 14px; }
-.card {
-  background: #1b1e2b;
-  border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+background-color: var(--bg-main);
+color: var(--text-primary);
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 20px;
+background-image:
+radial-gradient(circle at 50% 0%, rgba(0, 255, 204, 0.08) 0%, transparent 60%),
 
-/* 16px يمنع تكبير سفاري لحقول الإدخال تلقائيًا في آيفون */
-input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #0f111a;
-  color: #eee;
-  font-size: 16px;
-  width: 100%;
+linear-gradient(to bottom, rgba(11, 15, 23, 0.95), #0b0f17);
 }
-button {
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: none;
-  background: #3a3f5c;
-  color: #fff;
-  cursor: pointer;
-  font-size: 15px;
-  transition: background 0.15s;
-  min-height: 44px; /* حجم لمس مريح للجوال */
+/* Header & Logo Section */
+.header-container {
+display: flex;
+align-items: center;
+gap: 16px;
+margin-bottom: 30px;
+padding: 12px 24px;
+background: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 12px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 10px var(--accent-cyan-glow);
 }
-button:hover { background: #4c527a; }
-button.primary { background: #f2c14e; color: #12141c; font-weight: bold; }
-button.primary:hover { background: #ffd876; }
-.error { color: #ff6b6b; min-height: 20px; font-size: 14px; }
+.rank-logo {
+width: 48px;
+height: 48px;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+background: radial-gradient(circle, var(--accent-cyan-glow) 0%, transparent 70%);
+}
+.rank-logo svg {
+width: 100%;
+height: 100%;
+fill: var(--accent-cyan);
+filter: drop-shadow(0 0 6px var(--accent-cyan));
+}
+.game-title {
+font-size: 2rem;
+font-weight: 900;
+color: #ffffff;
+text-shadow: 0 0 10px var(--accent-cyan-glow);
+letter-spacing: 1px;
+}
+/* Card Container */
+.game-container {
+width: 100%;
+max-width: 650px;
+background: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 16px;
+padding: 24px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+position: relative;
+overflow: hidden;
+}
+.game-container::before {
+content: '';
+position: absolute;
 
-.teams { display: flex; gap: 16px; flex-wrap: wrap; }
-.team-col { flex: 1; min-width: 260px; background: #1b1e2b; padding: 14px; border-radius: 12px; }
-.team-col.red h3 { color: #ff6b6b; }
-.team-col.blue h3 { color: #6ba8ff; }
-.role-buttons { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
-.role-buttons button { flex: 1; min-width: 90px; }
-.player-list { list-style: none; padding: 0; margin: 0; font-size: 14px; opacity: 0.9; }
-.player-list li { padding: 4px 0; }
+top: 0;
+left: 0;
+right: 0;
+height: 3px;
+background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+}
+/* Input & Buttons */
+input[type="text"], input[type="number"] {
+width: 100%;
+padding: 14px 18px;
+background: var(--bg-input);
+border: 1px solid var(--border-color);
+border-radius: 8px;
+color: var(--accent-cyan);
+font-size: 1.1rem;
+outline: none;
+transition: all 0.3s ease;
+}
+input[type="text"]:focus, input[type="number"]:focus {
+border-color: var(--accent-cyan);
+box-shadow: 0 0 12px var(--accent-cyan-glow);
+}
+button, .btn {
+background: linear-gradient(135deg, #00c896, #00ffcc);
+color: #0b0f17;
+font-weight: 700;
+font-size: 1.05rem;
+padding: 12px 24px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+text-shadow: none;
+box-shadow: 0 4px 15px var(--accent-cyan-glow);
+}
+button:hover, .btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 20px var(--accent-cyan-glow);
+filter: brightness(1.1);
+}
+/* Keyboard / Buttons Grid */
+.keyboard-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+gap: 8px;
+margin-top: 20px;
+}
+.key-btn {
+background: var(--bg-input);
+border: 1px solid var(--border-color);
+color: var(--text-primary);
 
-.status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  position: sticky;
-  top: 0;
-  background: #12141c;
-  padding: 6px 0;
-  z-index: 5;
+padding: 10px;
+border-radius: 6px;
+font-weight: bold;
+cursor: pointer;
+text-align: center;
+transition: all 0.2s;
 }
-.turn-indicator { font-size: clamp(14px, 4vw, 18px); font-weight: bold; }
-.scores { display: flex; gap: 14px; font-size: 15px; }
-.score.red b { color: #ff6b6b; }
-.score.blue b { color: #6ba8ff; }
-
-.clue-bar {
-  background: #2c2f42;
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-size: clamp(14px, 4vw, 17px);
-  font-weight: bold;
-  text-align: center;
+.key-btn:hover {
+border-color: var(--accent-cyan);
+color: var(--accent-cyan);
+background: rgba(0, 255, 204, 0.1);
 }
-.clue-form { display: flex; gap: 8px; flex-wrap: wrap; }
-.clue-form input { flex: 1 1 60%; min-width: 140px; }
-.clue-form button { flex: 1 1 100%; }
-
-.board {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
-  margin: 10px 0;
-}
-.cell {
-  aspect-ratio: 1.1;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 3px;
-  font-weight: bold;
-  cursor: pointer;
-  background: #e8e2d0;
-  color: #222;
-  font-size: clamp(9px, 2.6vw, 14px);
-  line-height: 1.15;
-  user-select: none;
-  transition: transform 0.1s;
-  word-break: break-word;
-}
-.cell:hover { transform: scale(1.03); }
-.cell.revealed { cursor: default; opacity: 0.85; }
-.cell.color-red { background: #ff6b6b; color: #fff; }
-.cell.color-blue { background: #6ba8ff; color: #fff; }
-.cell.color-neutral { background: #cfcabb; }
-.cell.color-assassin { background: #222; color: #fff; }
-.cell.spy-hint-red { box-shadow: inset 0 0 0 3px #ff6b6b; }
-.cell.spy-hint-blue { box-shadow: inset 0 0 0 3px #6ba8ff; }
-.cell.spy-hint-assassin { box-shadow: inset 0 0 0 3px #000; }
-
-.game-footer { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-.log {
-  flex: 1 1 100%;
-  min-width: 0;
-  background: #1b1e2b;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 12px;
-  height: 110px;
-  overflow-y: auto;
-}
-.chat-box { flex: 1 1 100%; min-width: 0; display: flex; flex-direction: column; }
-.chat-messages {
-  background: #1b1e2b;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 12px;
-  height: 100px;
-  overflow-y: auto;
-  margin-bottom: 6px;
-}
-.chat-input-row { display: flex; gap: 6px; }
-.chat-input-row input { flex: 1; }
-
-/* شاشات أوسع من الجوال: استعد التخطيط الأفقي للسجل والدردشة جنبًا إلى جنب */
-@media (min-width: 640px) {
-  .log, .chat-box { flex: 1; min-width: 220px; }
-  .log { height: 160px; }
-  .chat-messages { height: 128px; }
-  .clue-form input { flex: 1 1 auto; }
-  .clue-form button { flex: 0 0 auto; }
-  .cell { font-size: 14px; }
-}
-
-/* هواتف صغيرة جدًا: قلّص الحواف أكثر */
-@media (max-width: 360px) {
-  #app { padding: 8px; }
-  .card, .team-col { padding: 10px; }
-  .board { gap: 4px; }
+/* Status / Cyber Badges */
+.badge {
+display: inline-block;
+padding: 4px 12px;
+border-radius: 20px;
+font-size: 0.85rem;
+font-weight: bold;
+background: rgba(16, 185, 129, 0.15);
+color: var(--accent-green);
+border: 1px solid var(--accent-green);
 }
