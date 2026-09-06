@@ -1,5 +1,6 @@
 /* =========================================================
-   Cyberpunk / Dark Theme for Al-Shifra Game
+   Cyberpunk Mobile-Optimized Theme for Al-Shifra Game
+   Supports iOS (iPhone Safari) & Android (Galaxy Chrome)
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
@@ -15,46 +16,55 @@
     --text-primary: #e2e8f0;
     --text-secondary: #94a3b8;
     --border-color: #1e293b;
-    --rank-color: #38bdf8;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent; /* إلغاء التظليل الأزرق عند اللمس في iOS */
+    touch-action: manipulation; /* تسريع الاستجابة للّمس ومنع التكبير المزدوج */
 }
 
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 16px;
+    padding-top: max(16px, env(safe-area-inset-top));
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
     background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 255, 204, 0.08) 0%, transparent 60%),
-        linear-gradient(to bottom, rgba(11, 15, 23, 0.95), #0b0f17);
+        radial-gradient(circle at 50% 0%, rgba(0, 255, 204, 0.1) 0%, transparent 70%),
+        linear-gradient(to bottom, #0b0f17, #070a10);
+    overflow-x: hidden;
 }
 
-/* Header & Logo Section */
+/* Header & Logo Container */
 .header-container {
+    width: 100%;
+    max-width: 500px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 30px;
-    padding: 12px 24px;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 12px 18px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 10px var(--accent-cyan-glow);
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 10px var(--accent-cyan-glow);
 }
 
 .rank-logo {
-    width: 48px;
-    height: 48px;
-    position: relative;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,28 +75,27 @@ body {
     width: 100%;
     height: 100%;
     fill: var(--accent-cyan);
-    filter: drop-shadow(0 0 6px var(--accent-cyan));
+    filter: drop-shadow(0 0 5px var(--accent-cyan));
 }
 
 .game-title {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 900;
     color: #ffffff;
     text-shadow: 0 0 10px var(--accent-cyan-glow);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
-/* Card Container */
+/* Main Mobile Game Container */
 .game-container {
     width: 100%;
-    max-width: 650px;
+    max-width: 500px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border-radius: 18px;
+    padding: 20px 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     position: relative;
-    overflow: hidden;
 }
 
 .game-container::before {
@@ -99,17 +108,19 @@ body {
     background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
 }
 
-/* Input & Buttons */
+/* Inputs & Forms Optimized for Mobile */
 input[type="text"], input[type="number"] {
     width: 100%;
-    padding: 14px 18px;
+    height: 48px; /* ارتفاع مريح للإبهام */
+    padding: 10px 14px;
     background: var(--bg-input);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 10px;
     color: var(--accent-cyan);
-    font-size: 1.1rem;
+    font-size: 16px; /* يمنع الزوم التلقائي المزعج في iPhone Safari */
     outline: none;
-    transition: all 0.3s ease;
+    text-align: center;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 input[type="text"]:focus, input[type="number"]:focus {
@@ -117,60 +128,67 @@ input[type="text"]:focus, input[type="number"]:focus {
     box-shadow: 0 0 12px var(--accent-cyan-glow);
 }
 
+/* Touch-Friendly Action Buttons */
 button, .btn {
+    width: 100%;
+    min-height: 48px;
     background: linear-gradient(135deg, #00c896, #00ffcc);
     color: #0b0f17;
-    font-weight: 700;
-    font-size: 1.05rem;
-    padding: 12px 24px;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 12px 18px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-shadow: none;
     box-shadow: 0 4px 15px var(--accent-cyan-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-button:hover, .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--accent-cyan-glow);
-    filter: brightness(1.1);
+button:active, .btn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
 }
 
-/* Keyboard / Buttons Grid */
+/* Mobile Virtual Keyboard Grid */
 .keyboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-    gap: 8px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(38px, 1fr));
+    gap: 6px;
+    margin-top: 16px;
 }
 
 .key-btn {
+    min-height: 44px; /* حجم مريح للّمس بالإبهام */
     background: var(--bg-input);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    padding: 10px;
-    border-radius: 6px;
+    border-radius: 8px;
+    font-size: 1.1rem;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    text-align: center;
-    transition: all 0.2s;
 }
 
-.key-btn:hover {
+.key-btn:active {
     border-color: var(--accent-cyan);
     color: var(--accent-cyan);
-    background: rgba(0, 255, 204, 0.1);
+    background: rgba(0, 255, 204, 0.15);
 }
 
-/* Status / Cyber Badges */
-.badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    background: rgba(16, 185, 129, 0.15);
-    color: var(--accent-green);
-    border: 1px solid var(--accent-green);
+/* Adjustments for Small Screens (e.g. iPhone SE) */
+@media (max-width: 380px) {
+    .game-title {
+        font-size: 1.3rem;
+    }
+    .game-container {
+        padding: 16px 12px;
+    }
+    .key-btn {
+        min-height: 40px;
+        font-size: 1rem;
+    }
 }
