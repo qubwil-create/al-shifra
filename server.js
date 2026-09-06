@@ -9,8 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static(path.join(__dirname, "public")));
-
+app.use(express.static(__dirname));
 // حالة كل الغرف تعيش هنا في الذاكرة (single-process MVP).
 // ملاحظة توسّع: عند الحاجة لأكثر من عملية/خادم، انقل هذا الكائن
 // إلى Redis (Hash لكل غرفة) واستخدم Redis Pub/Sub لبث الأحداث بين
